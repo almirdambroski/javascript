@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mudar a cor apartir de um clic de botão</title>
+    <!-- <script src="script.js"></script>  -->
+     <script>
+        const listaCompra = ["Arroz", "Feijão", "Ovos"];
+        console.log(listaCompra);
+
+        listaCompra[3] = "Farofa";/*Adicionando ou subtituir sabendo e definindo qual é o próximo itens*/
+        console.log(listaCompra);
+
+       listaCompra.push("Maçã"); /*Para adicionar elemento ao final da lista*/
+        console.log(listaCompra); 
+
+        const convidados = ['Sheila', 'Cleyton', 'Leticia'];
+        convidados.push("André");
+        console.log(convidados)
+        console.log(convidados[convidados.length -1]);
+        console.log(convidados.length);
+        convidados[convidados.length] = "Paulo"
+        console.log(convidados)
+        console.log(convidados.length);
+
+     </script>
+    
+</head>
+<body>
+<h1>Vetores</h1>
+
+ 
+</body>
+</html>

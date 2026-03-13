@@ -1,0 +1,10 @@
+var num1 = 5  /* variavel global - pode ser pperigoso usar */
+function varTeste1(){
+    let num1 = 1;  
+    console.log(num1);
+}
+const num1 = 2 /*Cuidado com const!! Não pode se alterar o valor*/
+num1 = 3;
+let num1 = 4;
+varTeste1();
+console.log(num1)

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mudar a cor apartir de um clic de botão</title>
+    <!-- <script src="script.js"></script>  -->
+     <script>
+            function efetuaOperacao(){
+        let num1 = parseFloat(document.getElementById("num1").value);
+        let num2 = parseFloat(document.getElementById("num2").value);
+        let operador = document.getElementById("operador").value;
+        let  resultado;
+     
+        switch (operador){
+          case "+":
+              resultado = num1 + num2;
+              break;
+          case "-":
+              resultado = num1 - num2;
+              break;
+          case "*":
+              resultado = num1 * num2;
+              break;
+          case "/":
+              if(num2 == 0){
+                resultado = "Divisão por zero é ínvalido.";
+              }
+              else
+              {
+                resultado = num1 / num2;
+              }
+              
+              break;
+          default:
+              resultado = "Operador ínvalido!"              
+        }
+        document.getElementById("resultado").innerHTML = "Resultado: " + resultado;
+      }
+
+     </script>
+    
+</head>
+<body>
+<h1>Calculadora com swit case</h1>
+<p>Operadores válidos: +, -, *, /</p>
+  <input type="text" id="num1" placeholder="Digite o primeiro numero">
+  <input type="text" id="num2" placeholder="Digite o segundo numero">
+  <input type="text" id="operador" placeholder="Digite o Operador">
+  <button onclick="efetuaOperacao()">Efetuar a operação</button>
+  <p id="resultado"></p>
+
+</body>
+</html>

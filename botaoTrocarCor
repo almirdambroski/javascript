@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mudar a cor apartir de um clic de botão</title>
+    <!-- script src="script.js"></script> -->
+    <script>
+      function trocaCor()
+      {
+        const div1 = document.getElementById("div-1");
+        const div2 = document.getElementById("div-2");
+        const div3 = document.getElementById("div-3");
+
+        div1.style.backgroundColor = "red";
+        div2.style.backgroundColor = "LightGreen";
+        div3.style.backgroundColor = "LightBlue";
+      }
+      function retornaCor(){
+        const div1 = document.getElementById("div-1");
+        const div2 = document.getElementById("div-2");
+        const div3 = document.getElementById("div-3");
+
+        div1.style.backgroundColor = "";
+        div2.style.backgroundColor = "";
+        div3.style.backgroundColor = "";
+
+
+      }
+
+    </script>
+</head>
+<h1>Trocando de cor nas divs</h1>
+  <button id="botaoTrocarCor" onclick="trocaCor()">Trocar cor</button>
+  <button id="botaoRetornaCor" onclick="retornaCor()">Retornar a cor original.</button>
+  
+  <div id="div-1" class="divTrocaCor">Div 1</div>
+  <div id="div-2" class="divTrocaCor">Div 2</div>
+  <div id="div-3" class="divTrocaCor">Div 3</div>
+</body>
+</html>

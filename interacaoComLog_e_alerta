@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- script src="script.js"></script> -->
+    <script>
+      function verificaAprovacao(){
+    let nota = document.getElementById("nota").value; /*pega o id do input*/
+    console.log(nota);
+
+    if(nota => 7){
+        document.getElementById("resultado").innerHTML = "Aluno(aprovado ou aprovado(a))";
+        alert("Aluno(aprovado ou aprovado(a))");       
+    }
+    else {
+        document.getElementById("resultado").innerHTML = "Aluno(reprovado ou reprovado(a))";
+        alert("Aluno(reprovado ou reprovado(a))"); /*Alerta - Forma simple de interagir com o usuario mostrando informação na tela*/   
+    }
+    console.log(nota);/* log -  serve para visualiza os valores da depuração do cósdigo durante a execução do código */ 
+}
+    </script>
+</head>
+<body>
+  <h1>Calculadora de aprovação</h1> 
+  <label>Digite a nota do aluno.</label>
+  <input type="text" id="nota" />
+  <button onclick="verificaAprovacao()">Verificar aprovação</button>
+  <p id="resultado"></p>
+</body>
+</html>

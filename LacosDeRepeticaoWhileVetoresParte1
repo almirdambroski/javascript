@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+ 
+  
+</head>
+<body>
+  <h1>Lista de carro com estrutura de reptição</h1>
+  <div id="conteudo">
+  </div>
+  <!--  <script src="script.js"></script> -->
+  <script>
+const carros = ["Uno", "Usca", "Escort", "Gol"];
+
+const conteudo = document.getElementById("conteudo");
+
+let dados = "";
+let i =0;
+while(i < 4)
+{
+    dados += "<p>"+carros[i]+"</p>";/*Interação repetitiva para pegar a variável*/
+    i++;/*função incrementar para não gerar loop*/
+}
+const secao = document.createElement("div");
+secao.innerHTML = "<h2>Loop While</h2>" +dados;
+conteudo.appendChild(secao);
+
+  </script> 
+</body>
+
+</html>

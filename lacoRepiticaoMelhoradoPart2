@@ -90,7 +90,7 @@ let carro2 = {marca:"Fiat", modelo: "Gol", ano:"2000"};
 
 let listaCarros = [];
 listaCarros.push(carro1);
-listaCarros.push(carros);
+listaCarros.push(carro2);
 
 console.log(listaCarros);
 

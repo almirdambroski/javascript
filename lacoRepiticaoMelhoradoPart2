@@ -40,7 +40,7 @@ while(i < 4)
     i++;/*função incrementar para não gerar loop*/
 }
 
-
+/*L*/
 
 
 let dados2 = "";
@@ -54,3 +54,48 @@ criaSecao("Loop while melhoraado", dados2)
 const secao2 = document.createElement("div");
 secao2.innerHTML = "<h2>Loop While</h2>" +dados2;
 conteudo.appendChild(secao2);
+
+/*While aoinvertido*/
+var dados3 = "";
+i = 0;
+do{
+  
+    dados3 += "<p>"+carros[i2]+"</p>";/*Interação repetitiva para pegar a variável*/
+    i++;/*função incrementar para não gerar loop*/
+
+}while(i < carros.length)
+criaSecao("Loop while invertido", dados3)
+
+/*For*/
+dados = "";
+for(i = 0; i<carros.length; i++){
+  dados += "<p>"+carros[i]+"</p>";
+  
+
+}
+criaSecao("Loop For", dados)
+
+/*LAço fo super poderoso*/
+dados = "";
+for(let carro of carros){
+  dados += "<p>"+carro+"</p>";
+
+}
+criaSecao("Loop For of", dados);
+
+/*Laços de repetição for in com matipulação em matri FOR IN*/
+
+let carro1 = {marca:"Ford", modelo: "Ka", ano:"2015"};
+let carro2 = {marca:"Fiat", modelo: "Gol", ano:"2000"};
+
+let listaCarros = [];
+listaCarros.push(carro1);
+listaCarros.push(carros);
+
+console.log(listaCarros);
+
+
+  </script> 
+</body>
+
+</html>

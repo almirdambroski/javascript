@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+ 
+  
+</head>
+<body>
+  <h1>Lista de carro com estrutura de reptição</h1>
+  <div id="conteudo">
+  </div>
+  <!--  <script src="script.js"></script> -->
+<script>
+  // 1. DADOS INICIAIS
+  const carros = ["Uno", "Usca", "Escort", "Gol"];
+  const conteudo = document.getElementById("conteudo");
+
+  // 2. FUNÇÃO REUTILIZÁVEL (Sempre defina suas funções no topo)
+  // Explicação: Essa função recebe um título e os parágrafos prontos, cria uma DIV e coloca na tela.
+  function criaSecao(titulo, dadosParaExibir) {
+    let secao = document.createElement("div");
+    // ERRO CORRIGIDO: Antes você usava a variável "dados", agora usamos o parâmetro "dadosParaExibir"
+    secao.innerHTML = "<h2>" + titulo + "</h2>" + dadosParaExibir;
+    conteudo.appendChild(secao);
+  }
+
+  // --- LOOP WHILE SIMPLES ---
+  let dados = "";
+  let i = 0;
+  while (i < 4) {
+    dados += "<p>" + carros[i] + "</p>";
+    i++;
+  }
+  criaSecao("Loop While Simples", dados);
+
+  // --- LOOP WHILE COM LENGTH (Melhor prática) ---
+  let dados2 = "";
+  let i2 = 0;
+  while (i2 < carros.length) {
+    dados2 += "<p>" + carros[i2] + "</p>";
+    i2++;
+  }
+  criaSecao("Loop While Melhorado", dados2);
+
+  // --- LOOP DO WHILE (O código executa ao menos uma vez) ---
+  let dados3 = "";
+  let i3 = 0; // Reiniciando o contador corretamente
+  do {
+    // ERRO CORRIGIDO: Você estava usando 'i2', que terminou o loop anterior valendo 4.
+    // O correto é usar 'i3', que começa em 0.
+    dados3 += "<p>" + carros[i3] + "</p>";
+    i3++;
+  } while (i3 < carros.length);
+  criaSecao("Loop Do While", dados3);
+
+  // --- LOOP FOR TRADICIONAL ---
+  let dadosFor = "";
+  for (let j = 0; j < carros.length; j++) {
+    dadosFor += "<p>" + carros[j] + "</p>";
+  }
+  criaSecao("Loop For", dadosFor);
+
+  // --- LOOP FOR...OF (Mais moderno e limpo para Arrays) ---
+  let dadosForOf = "";
+  for (let carro of carros) {
+    dadosForOf += "<p>" + carro + "</p>";
+  }
+  criaSecao("Loop For Of", dadosForOf);
+
+  // --- OBJETOS E MATRIZES ---
+  let carroObj1 = { marca: "Ford", modelo: "Ka", ano: "2015" };
+  let carroObj2 = { marca: "Fiat", modelo: "Gol", ano: "2000" };
+
+  let listaCarros = [];
+  listaCarros.push(carroObj1);
+  // ERRO CORRIGIDO: Você estava dando push em 'carros' (a lista de nomes), 
+  // o correto é 'carroObj2' (o objeto do Gol).
+  listaCarros.push(carroObj2);
+
+  console.log("Lista de Objetos:", listaCarros);
+</script>
+ 
+</body>
+
+</html>

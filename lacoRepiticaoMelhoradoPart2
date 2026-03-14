@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+ 
+  
+</head>
+<body>
+  <h1>Lista de carro com estrutura de reptição</h1>
+  <div id="conteudo">
+  </div>
+  <!--  <script src="script.js"></script> -->
+  <script>
+const carros = ["Uno", "Usca", "Escort", "Gol"];
+
+const conteudo = document.getElementById("conteudo");
+
+var dados3 = "";
+i3 = 0;
+
+
+/*função*/
+function criaSecao(titulo,dadosF)
+{
+  let secao = document.createElement("div");
+  secao.innerHTML = "<h2>"+titulo+"</h2>" +dados;
+  conteudo.appendChild(secao);
+
+}
+
+
+
+let dados = "";
+let i =0;
+while(i < 4)
+{
+    dados += "<p>"+carros[i]+"</p>";/*Interação repetitiva para pegar a variável*/
+    i++;/*função incrementar para não gerar loop*/
+}
+
+
+
+
+let dados2 = "";
+let i2 =0;
+while(i2 < carros.length)/*Pegando o ultimo indice de array com length*/
+{
+    dados2 += "<p>"+carros[i2]+"</p>";/*Interação repetitiva para pegar a variável*/
+    i2++;/*função incrementar para não gerar loop*/
+}
+criaSecao("Loop while melhoraado", dados2)
+const secao2 = document.createElement("div");
+secao2.innerHTML = "<h2>Loop While</h2>" +dados2;
+conteudo.appendChild(secao2);

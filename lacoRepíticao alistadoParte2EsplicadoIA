@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,76 +14,123 @@
   <div id="conteudo">
   </div>
   <!--  <script src="script.js"></script> -->
-<script>
-  // 1. DADOS INICIAIS
-  const carros = ["Uno", "Usca", "Escort", "Gol"];
-  const conteudo = document.getElementById("conteudo");
+  <script>
+const carros = ["Uno", "Usca", "Escort", "Gol"];
 
-  // 2. FUNÇÃO REUTILIZÁVEL (Sempre defina suas funções no topo)
-  // Explicação: Essa função recebe um título e os parágrafos prontos, cria uma DIV e coloca na tela.
-  function criaSecao(titulo, dadosParaExibir) {
-    let secao = document.createElement("div");
-    // ERRO CORRIGIDO: Antes você usava a variável "dados", agora usamos o parâmetro "dadosParaExibir"
-    secao.innerHTML = "<h2>" + titulo + "</h2>" + dadosParaExibir;
-    conteudo.appendChild(secao);
-  }
+const conteudo = document.getElementById("conteudo");
 
-  // --- LOOP WHILE SIMPLES ---
-  let dados = "";
-  let i = 0;
-  while (i < 4) {
-    dados += "<p>" + carros[i] + "</p>";
-    i++;
-  }
-  criaSecao("Loop While Simples", dados);
+var dados3 = "";
+i3 = 0;
 
-  // --- LOOP WHILE COM LENGTH (Melhor prática) ---
-  let dados2 = "";
-  let i2 = 0;
-  while (i2 < carros.length) {
-    dados2 += "<p>" + carros[i2] + "</p>";
-    i2++;
-  }
-  criaSecao("Loop While Melhorado", dados2);
 
-  // --- LOOP DO WHILE (O código executa ao menos uma vez) ---
-  let dados3 = "";
-  let i3 = 0; // Reiniciando o contador corretamente
-  do {
-    // ERRO CORRIGIDO: Você estava usando 'i2', que terminou o loop anterior valendo 4.
-    // O correto é usar 'i3', que começa em 0.
-    dados3 += "<p>" + carros[i3] + "</p>";
-    i3++;
-  } while (i3 < carros.length);
-  criaSecao("Loop Do While", dados3);
+/*função*/
+function criaSecao(titulo,dadosF)
+{
+  let secao = document.createElement("div");
+  secao.innerHTML = "<h2>"+titulo+"</h2>" +dados;
+  conteudo.appendChild(secao);
 
-  // --- LOOP FOR TRADICIONAL ---
-  let dadosFor = "";
-  for (let j = 0; j < carros.length; j++) {
-    dadosFor += "<p>" + carros[j] + "</p>";
-  }
-  criaSecao("Loop For", dadosFor);
+}
 
-  // --- LOOP FOR...OF (Mais moderno e limpo para Arrays) ---
-  let dadosForOf = "";
-  for (let carro of carros) {
-    dadosForOf += "<p>" + carro + "</p>";
-  }
-  criaSecao("Loop For Of", dadosForOf);
 
-  // --- OBJETOS E MATRIZES ---
-  let carroObj1 = { marca: "Ford", modelo: "Ka", ano: "2015" };
-  let carroObj2 = { marca: "Fiat", modelo: "Gol", ano: "2000" };
 
-  let listaCarros = [];
-  listaCarros.push(carroObj1);
-  // ERRO CORRIGIDO: Você estava dando push em 'carros' (a lista de nomes), 
-  // o correto é 'carroObj2' (o objeto do Gol).
-  listaCarros.push(carroObj2);
+let dados = "";
+let i =0;
+while(i < 4)
+{
+    dados += "<p>"+carros[i]+"</p>";/*Interação repetitiva para pegar a variável*/
+    i++;/*função incrementar para não gerar loop*/
+}
 
-  console.log("Lista de Objetos:", listaCarros);
-</script>
- 
+/*L*/
+
+
+let dados2 = "";
+let i2 =0;
+while(i2 < carros.length)/*Pegando o ultimo indice de array com length*/
+{
+    dados2 += "<p>"+carros[i2]+"</p>";/*Interação repetitiva para pegar a variável*/
+    i2++;/*função incrementar para não gerar loop*/
+}
+criaSecao("Loop while melhoraado", dados2)
+const secao2 = document.createElement("div");
+secao2.innerHTML = "<h2>Loop While</h2>" +dados2;
+conteudo.appendChild(secao2);
+
+/*While aoinvertido*/
+var dados3 = "";
+i = 0;
+do{
+  
+    dados3 += "<p>"+carros[i2]+"</p>";/*Interação repetitiva para pegar a variável*/
+    i++;/*função incrementar para não gerar loop*/
+
+}while(i < carros.length)
+criaSecao("Loop while invertido", dados3)
+
+/*For*/
+dados = "";
+for(i = 0; i<carros.length; i++){
+  dados += "<p>"+carros[i]+"</p>";
+  
+
+}
+criaSecao("Loop For", dados)
+
+/*LAço fo super poderoso*/
+dados = "";
+for(let carro of carros){
+  if(carro === "Escort")
+  break;/*Quando chegar no escorte para tudo*/
+  /*continue; Quando chega no continue ele não executa o indice do escorte e ele poula o escorte e vao para os outros*/
+  dados += "<p>"+carro+"</p>";
+
+}
+criaSecao("Loop For of", dados);
+
+/*Laços de repetição for in com matipulação em matri FOR IN*/
+
+let carro1 = {marca:"Ford", modelo: "Ka", ano:"2015"};
+let carro2 = {marca:"Fiat", modelo: "Gol", ano:"2000"};
+
+let listaCarros = [];
+listaCarros.push(carro1);
+listaCarros.push(carro2);
+
+console.log(listaCarros);
+
+/*Aqui esta a versão versão funcional do código de repetição*/
+
+dados = ""; 
+
+// 1. Mudamos carro2 para listaCarros
+for(let carro of listaCarros) 
+{
+    // 2. Inicializamos como string vazia para evitar o "undefined"
+    let propriedades = ""; 
+    
+    for(let prop in carro)
+    {
+        // 3. Atenção ao nome da variável (propriedades)
+        propriedades += carro[prop] + " | ";
+    }
+    
+    dados += "<p>" + propriedades + "</p>";
+}
+criaSecao("Loop For in", dados);
+
+
+dados = "";
+carros.forEach((carro) =>{
+  
+  dados += "<p>"+carro+"</p>";
+})
+criaSecao("Loop Foreach", dados);
+
+
+
+
+  </script> 
 </body>
 
 </html>

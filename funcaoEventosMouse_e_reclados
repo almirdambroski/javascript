@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    button{
+      margin: 20px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    input{
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }  
+  </style>
+</head>
+<body>
+ <h1>Escolha a cor de fundo ou interaja de outras formas. </h1>
+ <button id="redButton">Vermelho</button>
+ <button id="greenButton">Verde</button>
+ <button id="blueButton">Azul</button>
+ <input type="text" id="inputBox" placeholder="Pressionar uma tecla" size="20" />
+   
+  <script>
+
+    //Criando função para usar quando clicra
+  function setBackgroundColor(cor){
+    document.body.style.background = cor;
+  }
+document.getElementById('redButton').addEventListener('click',function(){setBackgroundColor('red');});
+document.getElementById('greenButton').addEventListener('click',function(){setBackgroundColor('green');});
+document.getElementById('blueButton').addEventListener('click',function(){setBackgroundColor('blue');});
+
+
+//Funç]ao para criar com tecla
+document.getElementById('inputBox').addEventListener('keypress', function(event){
+  alert("Tecla pressionada: " + event.key)
+});
+ // Dicar pesquisar os diversos tipos de eventos possiveis
+</script> 
+</body>
+</html>

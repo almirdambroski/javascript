@@ -1,0 +1,63 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+ 
+  <style>
+    label{
+      display: block;/*Faz com que o elemento ocupe a linha toda*/
+      margin: 10px;
+    } 
+  </style>
+</head>
+<body>
+  <h1>Funções.</h1>
+  <!-- 1 declara
+  1 - nome
+  2 - paramento no paramentos
+    3 - Bloco de código da função
+
+  4 - Envoca a função comform o return -->
+
+  <!--  <script src="script.js"></script> -->
+    <h1>Saudação personalizadad</h1>
+    <label> Digite o seu ome</label><input type="text" name="nome" id="nome">
+    <label for="hora">Selecione a hora:</label>
+    <select id="hora">
+      <option value="">Selecione</option>
+      <option value="9">Manhá</option>
+      <option value="15">Tarde</option>
+      <option value="20">Noite</option>
+    </select>
+    <button onclick="mostrarSaudacao()">Mostrar saudação.</button>
+    <p id="mensagem"></p>
+  
+</body>
+<script>
+  function mostrarSaudacao(){
+    const nome = document.getElementById('nome').value;
+    const hora = parseInt(document.getElementById('hora').value,10);
+    const mensagem = document.getElementById('mensagem');
+    mensagem.innerHTML = saudacaoPersonalizada(nome,hora);
+  }
+  function saudacaoPersonalizada(nome,hora){
+    if(hora < 12){
+      return "Bom dia," + nome + "!";
+    }
+    if(hora > 12 && hora < 18){
+      return "Boa tarde," + nome + "!";
+    }
+    if(hora > 18){
+      return "Boa noite," + nome + "!";
+    }
+    else
+    {
+      return"";
+    }
+  }
+  </script> 
+</html>

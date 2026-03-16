@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+   
+    label, button{
+      display: block;/*Mudara os elementos para baixo*/
+    }
+
+  </style>
+</head>
+<body>
+  <!--Evita erros de prenchimento
+  evita campo fasio
+  fedback ao usuario
+  Vallidação-->
+  <h1>Formulário de contato</h1>
+
+  <form id="contactForm">
+    <label for="name">Nome:</label>
+    <input type="text" id="name" required maxlength="250"/>
+
+    <label for="email">Email:</label>
+    <input type="text" id="email" required maxlength="250"/>
+    <label for="message">Mensagem:</label>
+    <textarea  required id="message"></textarea>
+
+    <button type="submit">Enviar</button>
+  </form>
+  
+  <script>
+    function validateForm(){
+    const name = document.getElementById("name").value; /*Utilize valur*/
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+    if(name === '' || email ==='' || message ==='')
+    {
+      return false;
+    }
+    if(name.length < 5 || name.length > 50)
+    {
+      alert('O nome deve ter entre 3 e 50 caractere');
+      return false;
+    }
+    if(email.length < 5 || email.length > 50)
+    {
+      alert('O email deve ter entre 3 e 50 caractere');
+      return false;
+    }
+    const emailPatern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;/*Use valiação padrão*/
+    if(!emailPatern.test(email))
+      {
+        alert('Por favor insira um padrão d eemeail váçido');
+        return false;
+      }
+      return true;
+    }     
+document.getElementById('contactForm').addEventListener('submit', function(event){
+
+  event.preventDefault();
+  if(validateForm()){
+    alert("Formulário validado");
+  }
+})
+  </script>  
+</body>
+</html>

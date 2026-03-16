@@ -1,79 +1,104 @@
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Logo da velha com Dom</title>
-  <style>
-    body{
-      display: flex;
-      flex-direction: column;justify-content: center;
-      align-items: center;
-      height: 100vh;
+    <meta charset="UTF-8">
+    <title>Jogo da Velha - Estudo</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; }
+        
+        /* O segredo para o tabuleiro: GRID */
+        .tabuleiro {
+            display: grid;
+            grid-template-columns: repeat(3, 100px); /* 3 colunas de 100px */
+            grid-template-rows: repeat(3, 100px);    /* 3 linhas de 100px */
+            gap: 5px;                               /* Espaço entre as células */
+            margin-top: 20px;
+        }
 
+        .celula {
+            width: 100px;
+            height: 100px;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            background-color: #f0f0f0;
+            border: 2px solid #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    }
-    .tabuleiro{
-      display: grid;
-      grid-template-columns: repeat(3, 100px);
-      gap: 10px;
-    }
-    .celula{
-      display: flex;
-      background-color: antiquewhite;
-      width: 100px;
-      height: 100px;
-      justify-content: center;
-      align-items: center;
-      font-size: 46px;
-      cursor: pointer;
-    }
-    #botao-reiniciar{
-      margin-top: 10px;
-      padding: 25px;
-    }
-   
-  </style>
+        #botao-reiniciar {
+            margin-top: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-<h1>Jogo da velha</h1>
-<div id="tabuleiro-jogo" class="tabuleiro">
-  <button class="celula"></button>
-  <button class="celula"></button>
-  <button class="celula"></button>
-  <button class="celula"></button>
-  <button class="celula"></button>
-  <button class="celula"></button>
-  <button class="celula"></button>
-  <button class="celula"></button>
-  <button class="celula"></button>
-</div>
-<button id="botao-reiniciar">Reiniciar o jogo</button>
 
-<script>
-  const celula = document.querySelectorAll(".celula");
+    <h1>Jogo da Velha</h1>
 
-  let vezdoX = true;
+    <div id="tabuleiro-jogo" class="tabuleiro">
+        <button class="celula"></button>
+        <button class="celula"></button>
+        <button class="celula"></button>
+        <button class="celula"></button>
+        <button class="celula"></button>
+        <button class="celula"></button>
+        <button class="celula"></button>
+        <button class="celula"></button>
+        <button class="celula"></button>
+    </div>
 
-  document.getElementById("botao-reiniciar").addEventListener('click',iniciarJogo)
+    <button id="botao-reiniciar">Reiniciar o jogo</button>
 
-  function iniciarJogo(){
-    celula.forEach(celula =>{
-      celula.textContent = "";
-      celula.addEventListener('click', tratarClick, {once:true});
-    });
-  }
-  function tratarClick(evento){
-    evento.target.textContent = vezdoX ? "X" : "0"; /*È a vez do x senão : 0*/
-    vezdoX = !vezdoX;/* a negação atribuie a negação para vez do x*/
-  }
-iniciarJogo();
+    <script>
+        // 1. SELEÇÃO DE ELEMENTOS
+        const celulas = document.querySelectorAll(".celula");
+        const botaoReiniciar = document.getElementById("botao-reiniciar");
 
-/* Revisar todos os metod Dom
-Revisar as propriedades HTML */
+        // 2. ESTADO DO JOGO
+        let vezdoX = true; // Controla se o próximo clique é X ou O
 
-</script>
+        // 3. FUNÇÕES PRINCIPAIS
+        function iniciarJogo() {
+            vezdoX = true; // Reinicia para começar com X
+            
+            celulas.forEach(celula => {
+                celula.textContent = ""; // Limpa o texto
+                
+                /* DICA: Usamos {once: true} para que o jogador não consiga 
+                   clicar na mesma casa duas vezes na mesma rodada. 
+                */
+                celula.removeEventListener('click', tratarClick); // Remove o antigo para não duplicar
+                celula.addEventListener('click', tratarClick, { once: true });
+            });
+        }
+
+        function tratarClick(evento) {
+            // O 'target' é o elemento que recebeu o clique
+            const casaClicada = evento.target;
+            
+            // Define o símbolo com base na vez
+            casaClicada.textContent = vezdoX ? "X" : "O";
+
+            // Alterna o valor de vezdoX (true vira false, false vira true)
+            vezdoX = !vezdoX;
+            
+            // Aqui futuramente você pode chamar uma função: checarVencedor();
+        }
+
+        // 4. INICIALIZAÇÃO E EVENTOS
+        botaoReiniciar.addEventListener('click', iniciarJogo);
+        
+        // Inicia o jogo assim que a página carrega
+        iniciarJogo();
+
+    </script>
 </body>
 </html>

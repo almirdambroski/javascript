@@ -1,0 +1,79 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logo da velha com Dom</title>
+  <style>
+    body{
+      display: flex;
+      flex-direction: column;justify-content: center;
+      align-items: center;
+      height: 100vh;
+
+
+    }
+    .tabuleiro{
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      gap: 10px;
+    }
+    .celula{
+      display: flex;
+      background-color: antiquewhite;
+      width: 100px;
+      height: 100px;
+      justify-content: center;
+      align-items: center;
+      font-size: 46px;
+      cursor: pointer;
+    }
+    #botao-reiniciar{
+      margin-top: 10px;
+      padding: 25px;
+    }
+   
+  </style>
+</head>
+<body>
+<h1>Jogo da velha</h1>
+<div id="tabuleiro-jogo" class="tabuleiro">
+  <button class="celula"></button>
+  <button class="celula"></button>
+  <button class="celula"></button>
+  <button class="celula"></button>
+  <button class="celula"></button>
+  <button class="celula"></button>
+  <button class="celula"></button>
+  <button class="celula"></button>
+  <button class="celula"></button>
+</div>
+<button id="botao-reiniciar">Reiniciar o jogo</button>
+
+<script>
+  const celula = document.querySelectorAll(".celula");
+
+  let vezdoX = true;
+
+  document.getElementById("botao-reiniciar").addEventListener('click',iniciarJogo)
+
+  function iniciarJogo(){
+    celula.forEach(celula =>{
+      celula.textContent = "";
+      celula.addEventListener('click', tratarClick, {once:true});
+    });
+  }
+  function tratarClick(evento){
+    evento.target.textContent = vezdoX ? "X" : "0"; /*È a vez do x senão : 0*/
+    vezdoX = !vezdoX;/* a negação atribuie a negação para vez do x*/
+  }
+iniciarJogo();
+
+/* Revisar todos os metod Dom
+Revisar as propriedades HTML */
+
+</script>
+</body>
+</html>
